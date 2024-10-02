@@ -1,0 +1,85 @@
+                                             ASSIGNMENT-1
+1.SELECT Productid, Name, Color, ListPrice
+   FROM Production.Product
+
+2. SELECT ProductID, Name, Color, ListPrice
+FROM Production.Product
+Where listprice !='0'
+
+3. SELECT ProductID, Name, Color, ListPrice
+FROM Production.Product
+Where color is Null
+
+4. SELECT ProductID, Name, Color, ListPrice
+FROM Production.Product
+Where color is Not null
+
+5. SELECT ProductID, Name, Color, ListPrice
+FROM Production.Product
+WHERE Color IS NOT NULL AND ListPrice > 0;
+
+6. SELECT Name, Color
+FROM Production. Product
+where color is not null
+
+7a. SELECT Name, Color
+FROM Production.Product
+where NAME= 'LL Crankarm' and COLOR= 'Black'
+7b. SELECT Name, Color
+FROM Production.Product
+where NAME= 'ML Crankarm' and COLOR= 'Black'
+7c. SELECT Name, Color
+FROM Production.Product
+where NAME= 'HL Crankarm ' and COLOR= 'Black'
+7d. SELECT Name, Color
+FROM Production.Product
+where NAME= 'Chainring Bolts ' and COLOR= 'silver'
+7e. SELECT Name, Color
+FROM Production.Product
+where NAME= 'Chainring Nut ' and COLOR= 'silver'
+7f. SELECT Name, Color
+FROM Production.Product
+where NAME= 'Chainring ' and COLOR= 'black'
+
+8. SELECT productId,name
+FROM Production.Product
+where ProductID between 400 and 500
+
+9. SELECT ProductID, Name, Color
+FROM Production.Product
+WHERE Color IN ('Black', 'Blue')
+
+10. SELECT ProductID, Name
+FROM Production.Product
+where name like 's%'
+
+11. SELECT name,listprice
+FROM Production.Product
+order by name
+
+12. SELECT Name, ListPrice
+FROM Production.Product
+WHERE Name LIKE 'A%' OR Name LIKE 'S%'
+ORDER BY Name;
+
+13. SELECT Name
+FROM Production.Product
+WHERE Name LIKE 'SPO[^K] %'
+ORDER BY Name;
+
+14. SELECT DISTINCT Color
+FROM Production.Product
+ORDER BY Color DESC;
+
+
+
+
+
+
+
+
+
+
+
+
+
