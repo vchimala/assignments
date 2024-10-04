@@ -130,14 +130,6 @@ JOIN CustomerMostQuantityOrdered AS CO ON EO.[Employee City] = CO.[Customer City
 
 WITH CTE AS (
     SELECT *, 
-           ROW_NUMBER() OVER (PARTITION BY FirstName, LastName ORDER BY (SELECT NULL)) AS rn
-    FROM Customers  
-)
-DELETE FROM CTE WHERE rn > 1;
-
-
-WITH CTE AS (
-    SELECT *, 
            ROW_NUMBER() OVER (PARTITION BY ContactName ORDER BY (SELECT NULL)) AS rn
     FROM Customers 
 )
