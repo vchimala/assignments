@@ -1,0 +1,270 @@
+1. FizzBuzz Game:
+
+
+using System;
+
+namespace Chapter03
+{
+    class Exercise03
+    {
+        static void Main(string[] args)
+        {
+            for (int i = 1; i <= 100; i++)
+            {
+                if (i % 3 == 0 && i % 5 == 0)
+                {
+                    Console.WriteLine("fizzbuzz");
+                }
+                else if (i % 3 == 0)
+                {
+                    Console.WriteLine("fizz");
+                }
+                else if (i % 5 == 0)
+                {
+                    Console.WriteLine("buzz");
+                }
+                else
+                {
+                    Console.WriteLine(i);
+                }
+            }
+        }
+    }
+}
+
+1b)Code Execution: Overflow Issue
+
+int max = 500;
+for (byte i = 0; i < max; i++)
+{
+    Console.WriteLine(i);
+}
+
+
+1b)What code could you add to warn about the problem?
+
+int max = 500;
+for (byte i = 0; i < max; i++)
+{
+    Console.WriteLine(i);
+    if (i == byte.MaxValue)
+    {
+        Console.WriteLine("Warning: Maximum byte value reached, exiting loop to prevent overflow.");
+        break; // Exits the loop to prevent an overflow
+    }
+}
+
+
+1c)Number Guessing Game:
+using System;
+
+namespace Chapter03
+{
+    class Exercise03
+    {
+        static void Main(string[] args)
+        {
+            int correctNumber = new Random().Next(3) + 1;
+            Console.WriteLine("Guess a number between 1 and 3:");
+            int userGuess;
+            
+            while (true)
+            {
+                string input = Console.ReadLine();
+                
+                if (!int.TryParse(input, out userGuess))
+                {
+                    Console.WriteLine("Please enter a valid integer.");
+                    continue;
+                }
+
+                if (userGuess < 1 || userGuess > 3)
+                {
+                    Console.WriteLine("The guess is outside the valid range. Please guess a number between 1 and 3.");
+                }
+                else if (userGuess < correctNumber)
+                {
+                    Console.WriteLine("Too low! Try again.");
+                }
+                else if (userGuess > correctNumber)
+                {
+                    Console.WriteLine("Too high! Try again.");
+                }
+                else
+                {
+                    Console.WriteLine("Correct! You guessed the number.");
+                    break;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+2.Code for pyramid formation :
+ using System;
+
+namespace PyramidPattern
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int totalRows = 5; // You can change this to make the pyramid taller or shorter
+
+            for (int i = 1; i <= totalRows; i++)
+            {
+                // Print spaces
+                for (int j = 1; j <= totalRows - i; j++)
+                {
+                    Console.Write(" ");
+                }
+
+                // Print stars
+                for (int k = 1; k <= (2 * i) - 1; k++)
+                {
+                    Console.Write("*");
+                }
+
+                // Move to the next line
+                Console.WriteLine();
+            }
+        }
+    }
+}
+
+
+
+3.  using System;
+
+namespace NumberGuessingGame
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int correctNumber = new Random().Next(1, 4);
+            Console.WriteLine("Guess a number between 1 and 3:");
+
+            while (true)
+            {
+                try
+                {
+                    int guessedNumber = int.Parse(Console.ReadLine());
+
+                    if (guessedNumber < 1 || guessedNumber > 3)
+                    {
+                        Console.WriteLine("The guess is outside the valid range. Please guess a number between 1 and 3.");
+                    }
+                    else if (guessedNumber < correctNumber)
+                    {
+                        Console.WriteLine("Too low! Try again.");
+                    }
+                    else if (guessedNumber > correctNumber)
+                    {
+                        Console.WriteLine("Too high! Try again.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Correct! You guessed the number.");
+                        break; // Exit the loop when the correct number is guessed
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Please enter a valid integer.");
+                }
+            }
+        }
+    }
+}
+
+
+4.C# console program that defines a variable representing a birth date and calculates how many days old a person is. It also calculates and outputs the date of their next 10,000-day anniversary:
+using System;
+
+namespace AgeInDays
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            DateTime birthDate = new DateTime(1990, 1, 1);
+            DateTime today = DateTime.Today;
+            int daysOld = (today - birthDate).Days;
+
+            Console.WriteLine($"You are {daysOld} days old.");
+
+            int daysToNextAnniversary = 10000 - (daysOld % 10000);
+            DateTime nextAnniversary = today.AddDays(daysToNextAnniversary);
+
+            Console.WriteLine($"Your next 10,000-day anniversary will be on: {nextAnniversary.ToShortDateString()}");
+        }
+    }
+}
+
+
+5.C# program that greets the user based on the current time of day, using only if statements:
+
+using System;
+
+namespace GreetingBasedOnTime
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            DateTime currentTime = DateTime.Now; 
+            int hour = currentTime.Hour;
+
+            Console.WriteLine($"Current Time: {currentTime}");
+
+            if (hour >= 5 && hour < 12)
+            {
+                Console.WriteLine("Good Morning");
+            }
+
+            if (hour >= 12 && hour < 17)
+            {
+                Console.WriteLine("Good Afternoon");
+            }
+
+            if (hour >= 17 && hour < 21)
+            {
+                Console.WriteLine("Good Evening");
+            }
+
+            if (hour >= 21 || hour < 5)
+            {
+                Console.WriteLine("Good Night");
+            }
+        }
+    }
+}
+
+
+6. C# program that prints the result of counting up to 24 using four different increments (1s, 2s, 3s, and 4s) with nested for loops:
+
+using System;
+
+namespace CountWithIncrements
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            for (int increment = 1; increment <= 4; increment++)
+            {
+                for (int number = 0; number <= 24; number += increment)
+                {
+                    Console.Write(number + ",");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+
+

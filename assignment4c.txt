@@ -1,0 +1,117 @@
+1.  A person’s telephone number -	string
+A person’s height  -	float or double
+A person’s age  -	int
+A person’s gender  -	enum or string
+A person’s salary  -	decimal
+A book’s ISBN	     -string
+A book’s price	     -decimal
+A book’s shipping weight -	float or double
+A country’s population  -	long
+The number of stars in the universe  -	ulong or double
+Number of employees per business  -	ushort or int
+
+
+
+2.  1. Difference Between Value Type and Reference Type Variables
+Value Types:
+
+Storage: Value types store the actual data directly in the stack.
+Examples: int, float, double, char, bool, struct, enum.
+Behavior:
+When assigned to another variable, a copy of the value is created.
+Modifying one variable does not affect the other.
+Memory Allocation: Generally allocated on the stack (unless they're part of a reference type).
+
+Reference Types:
+
+Storage: Reference types store a reference (or address) to the actual data, which is stored in the heap.
+Examples: string, class, array, delegate.
+Behavior:
+When assigned to another variable, only the reference is copied, not the actual data.
+Modifying the data through one reference affects the data as viewed through other references.
+Memory Allocation: Allocated on the heap, and the reference itself is on the stack.
+
+Boxing and Unboxing:
+Boxing	The process of converting a value type to a reference type.
+Example	int num = 42; object obj = num; (The value 42 is boxed into an object.)
+Unboxing	The process of converting a reference type back to a value type, requiring an explicit cast.
+Example	object obj = 42; int num = (int)obj; (The object is unboxed back to the integer value 42.)
+
+
+3.Managed Resource:
+
+These are resources that are managed by the .NET runtime, specifically the Garbage Collector (GC).
+Examples include memory allocated for objects, arrays, and strings.
+The memory management for these resources is handled automatically, meaning the GC takes care of reclaiming memory when it is no longer needed.
+Unmanaged Resource:
+
+These are resources that are not managed by the .NET runtime and require manual management by the developer.
+Examples include file handles, database connections, and network sockets.
+Developers must explicitly release these resources, typically by implementing the IDisposable interface and calling the Dispose method when done.
+
+
+4.Garbage Collector (GC):	Part of the .NET runtime responsible for automatic memory management.
+ Automatically identifies and frees memory that is no longer in use, preventing memory leaks.
+ Simplifies memory management, optimizes performance, and reclaims unreachable objects.
+
+Controlling Flow and Converting Types:
+
+1)What happens when you divide an int variable by 0?
+
+It causes a DivideByZeroException at runtime.
+
+2)What happens when you divide a double variable by 0?
+
+It results in positive or negative infinity (Infinity or -Infinity), or NaN (Not a Number) if you divide zero by zero.
+
+3)What happens when you overflow an int variable, that is, set it to a value beyond its range?
+
+It wraps around to the minimum value (if overflow checking is off), or throws an OverflowException (if overflow checking is on).
+
+
+4)What is the difference between x = y++; and x = ++y;?
+
+x = y++; assigns the current value of y to x and then increments y.
+x = ++y; increments y first and then assigns the new value to x.
+
+
+5)What is the difference between break, continue, and return when used inside a loop statement?
+
+break: Exits the loop entirely.
+continue: Skips the current iteration and moves to the next iteration of the loop.
+return: Exits the method and returns control to the calling method.
+
+
+6)What are the three parts of a for statement and which of them are required?
+
+The three parts are:
+Initialization (required)
+Condition (required)
+Iteration (optional)
+Only the condition is required to continue looping.
+
+
+7)What is the difference between the = and == operators?
+
+= is the assignment operator, used to assign a value to a variable.
+== is the equality operator, used to compare two values for equality.
+
+
+8)Does the following statement compile? for ( ; true; ) ;
+
+Yes, it compiles and represents an infinite loop.
+
+
+
+9)What does the underscore _ represent in a switch expression?
+
+The underscore _ is used as a discard pattern, matching any value not explicitly handled by other patterns.
+
+10)What interface must an object implement to be enumerated over by using the foreach statement?
+
+The object must implement the IEnumerable interface.
+
+
+
+
+
