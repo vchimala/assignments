@@ -1,0 +1,115 @@
+using System;
+
+public class Color
+{
+    private int red;
+    private int green;
+    private int blue;
+    private int alpha;
+
+    public Color(int red, int green, int blue, int alpha)
+    {
+        this.red = ClampValue(red);
+        this.green = ClampValue(green);
+        this.blue = ClampValue(blue);
+        this.alpha = ClampValue(alpha);
+    }
+
+    public Color(int red, int green, int blue) : this(red, green, blue, 255) { }
+
+    public int Red
+    {
+        get { return red; }
+        set { red = ClampValue(value); }
+    }
+
+    public int Green
+    {
+        get { return green; }
+        set { green = ClampValue(value); }
+    }
+
+    public int Blue
+    {
+        get { return blue; }
+        set { blue = ClampValue(value); }
+    }
+
+    public int Alpha
+    {
+        get { return alpha; }
+        set { alpha = ClampValue(value); }
+    }
+
+    public int Grayscale()
+    {
+        return (red + green + blue) / 3;
+    }
+
+    private int ClampValue(int value)
+    {
+        return Math.Max(0, Math.Min(255, value));
+    }
+
+    public override string ToString()
+    {
+        return $"RGB({red}, {green}, {blue}, {alpha})";
+    }
+}
+
+public class Ball
+{
+    private float size;
+    private Color color;
+    private int throwCount;
+
+    public Ball(float size, Color color)
+    {
+        this.size = size;
+        this.color = color;
+        throwCount = 0;
+    }
+
+    public void Pop()
+    {
+        size = 0;
+    }
+
+    public void Throw()
+    {
+        if (size > 0)
+        {
+            throwCount++;
+        }
+    }
+
+    public int GetThrowCount()
+    {
+        return throwCount;
+    }
+
+    public float Size => size;
+    public Color Color => color;
+}
+
+// Main Class
+class Program
+{
+    static void Main(string[] args)
+    {
+        Color redColor = new Color(255, 0, 0);
+        Ball ball1 = new Ball(10, redColor);
+
+        ball1.Throw();
+        ball1.Throw();
+        ball1.Pop();
+        ball1.Throw();
+
+        Color blueColor = new Color(0, 0, 255);
+        Ball ball2 = new Ball(5, blueColor);
+        ball2.Throw();
+
+        Console.WriteLine($"Ball 1 (Color: {ball1.Color}) has been thrown {ball1.GetThrowCount()} times.");
+        Console.WriteLine($"Ball 2 (Color: {ball2.Color}) has been thrown {ball2.GetThrowCount()} times.");
+    }
+}

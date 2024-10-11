@@ -1,0 +1,92 @@
+using System;
+
+abstract class Person
+{
+    // Encapsulation: private fields
+    private string name;
+    private int age;
+
+    // Constructor
+    public Person(string name, int age)
+    {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Properties for encapsulated fields
+    public string Name
+    {
+        get { return name; }
+        set { name = value; }
+    }
+
+    public int Age
+    {
+        get { return age; }
+        set { age = value; }
+    }
+
+    // Abstraction: Method to be overridden by derived classes
+    public abstract void DisplayInfo();
+
+    // Polymorphism: Virtual method for salary calculation
+    public virtual double CalculateSalary()
+    {
+        return 0; // Default implementation
+    }
+}
+
+// Inheritance: Derived class Student
+class Student : Person
+{
+    public int GradeLevel { get; set; }
+
+    public Student(string name, int age, int gradeLevel) : base(name, age)
+    {
+        GradeLevel = gradeLevel;
+    }
+
+    // Polymorphism: Overriding the DisplayInfo method
+    public override void DisplayInfo()
+    {
+        Console.WriteLine($"Student: {Name}, Age: {Age}, Grade Level: {GradeLevel}");
+    }
+}
+
+// Inheritance: Derived class Instructor
+class Instructor : Person
+{
+    public double Salary { get; set; }
+
+    public Instructor(string name, int age, double salary) : base(name, age)
+    {
+        Salary = salary;
+    }
+
+    // Polymorphism: Overriding the DisplayInfo method
+    public override void DisplayInfo()
+    {
+        Console.WriteLine($"Instructor: {Name}, Age: {Age}, Salary: {Salary:C}");
+    }
+
+    // Polymorphism: Overriding the CalculateSalary method
+    public override double CalculateSalary()
+    {
+        return Salary * 12; // Annual salary calculation
+    }
+}
+
+// Main program to demonstrate the principles
+class Program
+{
+    static void Main(string[] args)
+    {
+        Student student = new Student("Alice", 20, 2);
+        Instructor instructor = new Instructor("Bob", 45, 3000);
+
+        student.DisplayInfo();
+        instructor.DisplayInfo();
+
+        Console.WriteLine($"Annual Salary of {instructor.Name}: {instructor.CalculateSalary():C}");
+    }
+}
